@@ -1160,25 +1160,29 @@
                 <div class="position-relative">
                     <div class="position-relative z-2">
                         <h3 class="text-primary-2 mb-3">Let’s connect</h3>
-                        <form action="#">
+                        <div id="form-message" class="alert d-none mb-3 rounded-3" role="alert"></div>
+                        <form id="contact-form" action="https://formsubmit.co/moazzamshahkhan08@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="New message from Portfolio Contact Form" />
+                            <input type="hidden" name="_captcha" value="false" />
+                            <input type="hidden" name="_template" value="table" />
                             <div class="row g-3">
                                 <div class="col-md-6 ">
-                                    <input type="text" class="form-control bg-3 border border-1 rounded-3" id="name" name="name" placeholder="Your name" aria-label="username" />
+                                    <input type="text" class="form-control bg-3 border border-1 rounded-3" id="name" name="name" placeholder="Your name" aria-label="username" required />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control bg-3 border border-1 rounded-3" id="phone" name="phone" placeholder="Phone" aria-label="phone" />
+                                    <input type="tel" class="form-control bg-3 border border-1 rounded-3" id="phone" name="phone" placeholder="Phone" aria-label="phone" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control bg-3 border border-1 rounded-3" id="email" name="email" placeholder="Emaill" aria-label="email" />
+                                    <input type="email" class="form-control bg-3 border border-1 rounded-3" id="email" name="email" placeholder="Email" aria-label="email" required />
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control bg-3 border border-1 rounded-3" id="subject" name="subject" placeholder="Subject" aria-label="subject" />
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control bg-3 border border-1 rounded-3" id="message" name="message" placeholder="Message" aria-label="With textarea"></textarea>
+                                    <textarea class="form-control bg-3 border border-1 rounded-3" id="message" name="message" placeholder="Message" aria-label="With textarea" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary-2 rounded-2">
+                                    <button type="submit" id="contact-submit-btn" class="btn btn-primary-2 rounded-2">
                                         Send Message
                                         <i class="ri-arrow-right-up-line"></i>
                                     </button>

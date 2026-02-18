@@ -757,6 +757,11 @@ img {
   animation: spin 15s linear infinite;
 }
 
+.animate-spin {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0);

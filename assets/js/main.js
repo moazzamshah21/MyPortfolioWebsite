@@ -420,6 +420,46 @@
         }
     }
     /*=============================================
+	=           Contact Form       =
+    =============================================*/
+    function contactFormSubmit() {
+        var form = document.getElementById('contact-form');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = document.getElementById('contact-submit-btn');
+            var msgEl = document.getElementById('form-message');
+            if (!btn || !msgEl) return;
+            btn.disabled = true;
+            btn.innerHTML = 'Sending... <i class="ri-loader-4-line animate-spin"></i>';
+            msgEl.classList.add('d-none');
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' },
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        msgEl.className = 'alert alert-success mb-3 rounded-3';
+                        msgEl.textContent = 'Thanks! Your message was sent successfully.';
+                        msgEl.classList.remove('d-none');
+                        form.reset();
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(function () {
+                    msgEl.className = 'alert alert-danger mb-3 rounded-3';
+                    msgEl.textContent = 'Something went wrong. Please try again or email me directly.';
+                    msgEl.classList.remove('d-none');
+                })
+                .finally(function () {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Send Message <i class="ri-arrow-right-up-line"></i>';
+                });
+        });
+    }
+    /*=============================================
 	=           Page Load       =
     =============================================*/
     $(window).on('load', function () {
@@ -438,5 +478,6 @@
         inputFocus();
         mobileHeaderActive();
         cardScroll();
+        contactFormSubmit();
     });
 })(jQuery);
